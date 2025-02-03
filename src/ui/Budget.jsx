@@ -54,7 +54,7 @@ function Budget() {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <div className="fixed w-4 hidden md:block z-10">
+      <div className="fixed z-10">
         <Sidebar />
       </div>
 

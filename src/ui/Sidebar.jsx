@@ -53,13 +53,8 @@ function Sidebar() {
         >
           <FaHome />
         </Link>
-        <Link
-          to="/tasks"
-          className="text-2xl my-4 cursor-pointer hover:text-blue-400"
-          onClick={() => setIsOpen(false)}
-        >
-          <FaTasks />
-        </Link>
+        
+       
         <Link
           to="/visualization"
           className="text-2xl my-4 cursor-pointer hover:text-blue-400"
@@ -89,9 +84,7 @@ function Sidebar() {
           <FaHome />
         </Link>
 
-        <Link to="/tasks" className="text-2xl mb-4 cursor-pointer hover:text-[#9AA6B2]">
-          <FaTasks />
-        </Link>
+        
         <Link to="/visualization" className="text-2xl mb-4 cursor-pointer hover:text-[#9AA6B2]">
           <FaChartBar />
         </Link>
