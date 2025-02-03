@@ -1,5 +1,15 @@
-import React, { useState } from 'react';
-import { FaHome, FaUser, FaTasks, FaChartBar, FaCog, FaBars } from 'react-icons/fa';
+import React, { useState } from "react";
+import {
+  FaHome,
+  FaUser,
+  FaTasks,
+  FaChartBar,
+  FaCog,
+  FaBars,
+  FaTimes,
+  FaDollarSign,
+} from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link from React Router
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,32 +17,91 @@ function Sidebar() {
   return (
     <>
       {/* Navbar for Mobile with Hamburger Menu */}
-      <div className="lg:hidden fixed top-0 left-0 w-full bg-pink-500 text-white flex justify-between items-center px-4 py-4">
+      <div className="z-50 lg:hidden fixed top-0 left-0 w-full bg-[#BCCCDC] text-white flex justify-between items-center px-4 py-4 shadow-md">
         <h1 className="text-xl font-semibold">Menu</h1>
-        <FaBars 
-          className="text-2xl cursor-pointer" 
-          onClick={() => setIsOpen(!isOpen)} 
-        />
+        {isOpen ? (
+          <FaTimes
+            className="text-2xl cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          />
+        ) : (
+          <FaBars
+            className="text-2xl cursor-pointer"
+            onClick={() => setIsOpen(true)}
+          />
+        )}
       </div>
 
-      {/* Sidebar Icons as Navbar for Mobile */}
-      {isOpen && (
-        <div className="fixed top-16 left-0 w-full bg-pink-500 text-white flex justify-around py-4 lg:hidden">
-          <FaHome className="text-2xl cursor-pointer hover:text-blue-400" />
-          <FaUser className="text-2xl cursor-pointer hover:text-blue-400" />
-          <FaTasks className="text-2xl cursor-pointer hover:text-blue-400" />
-          <FaChartBar className="text-2xl cursor-pointer hover:text-blue-400" />
-          <FaCog className="text-2xl cursor-pointer hover:text-blue-400" />
-        </div>
-      )}
+      {/* Sidebar for Mobile (Vertical) */}
+      <div
+        className={`z-50 fixed top-0 left-0 h-screen bg-black opacity-70 text-white w-full flex flex-col items-center pt-16 transition-transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:hidden`}
+      >
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4 text-2xl"
+          onClick={() => setIsOpen(false)}
+        >
+          <FaTimes />
+        </button>
+
+        <Link
+          to="/"
+          className="text-3xl my-4 cursor-pointer hover:text-blue-400"
+          onClick={() => setIsOpen(false)}
+        >
+          <FaHome />
+        </Link>
+        <Link
+          to="/tasks"
+          className="text-2xl my-4 cursor-pointer hover:text-blue-400"
+          onClick={() => setIsOpen(false)}
+        >
+          <FaTasks />
+        </Link>
+        <Link
+          to="/visualization"
+          className="text-2xl my-4 cursor-pointer hover:text-blue-400"
+          onClick={() => setIsOpen(false)}
+        >
+          <FaChartBar />
+        </Link>
+        <Link
+          to="/budget"
+          className="text-2xl my-4 cursor-pointer hover:text-blue-400"
+          onClick={() => setIsOpen(false)}
+        >
+          <FaDollarSign />
+        </Link>
+        <Link
+          to="/settings"
+          className="text-2xl my-4 cursor-pointer hover:text-blue-400"
+          onClick={() => setIsOpen(false)}
+        >
+          <FaCog />
+        </Link>
+      </div>
 
       {/* Sidebar for Desktop */}
-      <div className="hidden lg:flex lg:w-16 bg-pink-500 text-white h-screen flex-col items-center py-6">
-        <FaHome className="mb-4 cursor-pointer hover:text-blue-400" />
-        <FaUser className="mb-4 cursor-pointer hover:text-blue-400" />
-        <FaTasks className="mb-4 cursor-pointer hover:text-blue-400" />
-        <FaChartBar className="mb-4 cursor-pointer hover:text-blue-400" />
-        <FaCog className="cursor-pointer hover:text-blue-400" />
+      <div className="z-50 hidden lg:flex lg:w-16 bg-[#F8FAFC] text-black h-screen flex-col items-center py-6">
+        <Link to="/" className="text-2xl mb-4 cursor-pointer hover:text-[#9AA6B2]">
+          <FaHome />
+        </Link>
+
+        <Link to="/tasks" className="text-2xl mb-4 cursor-pointer hover:text-[#9AA6B2]">
+          <FaTasks />
+        </Link>
+        <Link to="/visualization" className="text-2xl mb-4 cursor-pointer hover:text-[#9AA6B2]">
+          <FaChartBar />
+        </Link>
+        <Link to="/budget" className="text-2xl cursor-pointer hover:text-[#9AA6B2]">
+          <FaDollarSign />
+        </Link>
+        <br />
+        <Link className="text-2xl mb-4 cursor-pointer hover:text-[#9AA6B2]">
+          <FaUser />
+        </Link>
       </div>
     </>
   );

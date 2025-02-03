@@ -7,7 +7,7 @@ function ProjectCard({ project }) {
   const { name, category, progress, daysLeft, startDate, endDate, teamMembersCount } = project;
 
   return (
-    <div className="bg-pink-200 shadow-lg rounded-2xl p-6 flex flex-col relative">
+    <div className="bg-[#DAD2FF] shadow-lg rounded-2xl p-6 flex flex-col relative">
       {/* More Button - Vertically Positioned */}
       <div className="absolute top-5 right-2 flex flex-col items-end space-y-1">
         <button className="text-sm text-gray-500 hover:text-gray-700 flex items-center">
@@ -16,7 +16,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Project Name */}
-      <div className="text-xl font-semibold text-gray-800 mb-2">{name}</div>
+      <div className="text-xl font-semibold text-gray-800 mb-2 merienda-title">{name}</div>
 
       {/* Project Category */}
       <div className="text-sm text-gray-500 mb-4">{category}</div>
@@ -68,9 +68,9 @@ function ProjectCard({ project }) {
         <div>
           <Link 
             to={`/tasks/${name}`} // Use Link to navigate to TaskPage with the project name as a URL param
-            className="bg-trans text-black py-2 px-4 rounded-lg hover:bg-pink-400 transition border border-black"
+            className="bg-trans text-black py-2 px-4 rounded-lg hover:bg-pink-400 transition border border-black philosopher-regular"
           >
-            <FaClipboardList className="mr-2 inline" />
+            <FaClipboardList className="mr-2 inline philosopher-regular" />
             View Details
           </Link>
         </div>

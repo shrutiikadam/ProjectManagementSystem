@@ -2,7 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaClipboardList, FaEllipsisV } from 'react-icons/fa'; // Icons
 import { FaUserCircle } from 'react-icons/fa'; // Profile icon
-import {CardRotate} from './CardRotate'
+import { CardRotate } from './CardRotate';
+import Modal from './Modal'; // Import Modal Component
+
 export default function Stack({
   tasksData = [], // Array of tasks to display on cards
   sensitivity = 200,
@@ -19,6 +21,9 @@ export default function Stack({
         ]
   );
 
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
+  const [selectedCard, setSelectedCard] = useState(null); // State to hold the selected card details
+
   const sendToBack = (id) => {
     setCards((prev) => {
       const newCards = [...prev];
@@ -27,6 +32,18 @@ export default function Stack({
       newCards.unshift(card);
       return newCards;
     });
+  };
+
+  // Function to open the modal
+  const openModal = (card) => {
+    setSelectedCard(card); // Set the selected card details
+    setIsModalOpen(true); // Open the modal
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCard(null);
   };
 
   return (
@@ -45,7 +62,7 @@ export default function Stack({
           sensitivity={sensitivity}
         >
           <motion.div
-            className="absolute w-full h-full rounded-lg overflow-hidden bg-pink-300 border border-white shadow-lg"
+            className="absolute w-full h-full rounded-lg overflow-hidden bg-[#DAD2FF] border border-white shadow-lg"
             animate={{
               rotateZ: (cards.length - index - 1) * 4,
               scale: 1 + index * 0.06 - cards.length * 0.06,
@@ -105,14 +122,20 @@ export default function Stack({
               </div>
 
               {/* View Details Button */}
-              <button className="bg-trans text-black py-2 px-4 rounded-lg hover:bg-pink-400 transition border border-black">
-                <FaClipboardList className="mr-2 inline" />
+              <button
+                className="bg-trans text-black py-2 px-4 rounded-lg hover:bg-[#B2A5FF] transition border border-black"
+                onClick={() => openModal(card)} // Open Modal on button click
+              >
+                <FaClipboardList className="mr-2 inline " />
                 View Details
               </button>
             </div>
           </motion.div>
         </CardRotate>
       ))}
+
+      {/* Full-Screen Modal Component */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} cardDetails={selectedCard} />
     </div>
   );
 }

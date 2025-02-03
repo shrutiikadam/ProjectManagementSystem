@@ -13,7 +13,7 @@ function CalendarComponent() {
 
   return (
     <div className="bg-gray-200 p-2 shadow-xl rounded-lg mx-auto mt-8">
-      <h3 className="text-2xl font-semibold mb-4 text-gray-700">Agenda for Today</h3>
+      <h3 className="text-2xl font-semibold mb-4 text-gray-700 merienda-title">Agenda for Today</h3>
       
       <Calendar 
         onChange={handleDateChange} 

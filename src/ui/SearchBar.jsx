@@ -24,12 +24,12 @@ function SearchBar() {
   }, []); // Only run once on mount
 
   return (
-    <div className="relative mb-6 flex items-center">
+    <div className="relative mb-6 flex items-center philosopher-regular ">
       {/* Search Input */}
       <input
         type="text"
         placeholder={placeholderText}
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none pl-10 pr-14"
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none pl-10 pr-14 philosopher-regular"
       />
       
       {/* Search Icon on Left */}

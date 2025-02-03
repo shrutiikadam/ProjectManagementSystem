@@ -39,18 +39,18 @@ function Dashboard() {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <div className="fixed">
+      <div className="fixed z-50">
         <Sidebar />
       </div>
 
-      <div className="flex-1 p-4 ml-16 gap-4 flex bg-blue-100 flex-col lg:flex-row">
+      <div className="flex-1 p-4 md:ml-16 md:mt-15 gap-4 flex bg-blue-100 flex-col lg:flex-row mt-30 md:mt-0 mt-12">
         <div className="flex-1 flex flex-col space-y-6 border border-gray p-8 rounded-3xl bg-white">
           {/* Search Bar */}
           <SearchBar />
 
           {/* Project Summary Section */}
           <div className="mt-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Projects Overview</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4 merienda-title">Projects Overview</h2>
             <div className="flex space-x-8">
               <div className="text-lg text-gray-800">
                 <div className="text-4xl font-bold">{totalProjects}</div>
@@ -86,8 +86,8 @@ function Dashboard() {
           <CalendarComponent />
 
           {/* Tasks Section */}
-          <div className="mt-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Today's Tasks</h2>
+          <div className="mt-6 philosopher-regular">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4 merienda-title">Today's Tasks</h2>
             {filteredTasks.map((task, index) => (
               <Tasks key={index} task={task} />
             ))}
